@@ -4,12 +4,14 @@ pluginManagement {
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
         google()
         mavenCentral()
+        maven("https://dl.bintray.com/jetbrains/kotlin-native-dependencies")
     }
 
     plugins {
         kotlin("jvm").version(extra["kotlin.version"] as String)
         id("org.jetbrains.compose").version(extra["compose.version"] as String)
-        id("app.cash.sqldelight") version "2.0.0" apply false
+
+        id("org.jetbrains.kotlin.native") version "1.3.41"
     }
 }
 

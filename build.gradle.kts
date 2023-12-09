@@ -5,7 +5,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.9.20"
     id("org.jetbrains.compose") version "1.5.10"
-    id("app.cash.sqldelight") version "2.0.0"
+    // id("org.jetbrains.kotlin.native") version "1.3.41"
 }
 
 tasks.withType<KotlinCompile> {
@@ -14,14 +14,6 @@ tasks.withType<KotlinCompile> {
 
 kotlin {
     jvmToolchain(11)
-}
-
-sqldelight {
-    databases {
-        create("KVDatabase") {
-            packageName.set("com.mgg.adb.kv.db")
-        }
-    }
 }
 
 group = "com.mgg.adb"
