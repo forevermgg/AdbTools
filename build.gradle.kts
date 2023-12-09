@@ -1,3 +1,4 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -44,6 +45,12 @@ dependencies {
     // implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.7.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    implementation(compose.runtime)
+    implementation(compose.foundation)
+    implementation(compose.material)
+    @OptIn(ExperimentalComposeLibrary::class)
+    implementation(compose.components.resources)
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
 }
 
 compose.desktop {
