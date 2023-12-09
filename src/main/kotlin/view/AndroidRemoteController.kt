@@ -1,6 +1,7 @@
 package view
 
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Column
@@ -20,11 +21,12 @@ import util.ShellUtilsKt
 import util.formatAdbCommand
 
 @Composable
+@Preview
 fun viewAdbKeyEvent() {
 
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
-    val scale by animateFloatAsState(targetValue = if (isPressed) 0.9f else 1f, label = "scale")
+    // val scale by animateFloatAsState(targetValue = if (isPressed) 0.9f else 1f, label = "scale")
     var textAdbPathFieldValue by rememberSaveable { mutableStateOf(TextFieldValue("")) }
     val scope = rememberCoroutineScope()
     Column(
@@ -82,6 +84,16 @@ fun viewAdbKeyEvent() {
                     }
                 }) {
                 Text("⬇️")
+            }
+
+            Button(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                onClick = {
+                    scope.launch(Dispatchers.Default) {
+                        execAdb(textAdbPathFieldValue.text, 4)
+                    }
+                }) {
+                Text("🔙")
             }
         }
     )
